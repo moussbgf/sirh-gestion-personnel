@@ -1,13 +1,15 @@
 package dev.sgp.web;
 
 import java.io.IOException;
-import java.util.Arrays;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dev.sgp.entite.Collaborateur;
+import dev.sgp.service.CollaborateurService;
+import dev.sgp.util.Constantes;
 
 /**
  * Servlet implementation class ListerCollaborateursController
@@ -15,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ListerCollaborateursController")
 public class ListerCollaborateursController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	// récupération du service
+
+	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -30,42 +35,21 @@ public class ListerCollaborateursController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 
-//		response.getWriter().write("Salut ListerCollaborateursController !");
-//
-//		// récupère la valeur d'un paramètre dont le nom est avecPhoto
-//
-//		String avecPhotoParam = request.getParameter("avecPhoto");
-//
-//		// récupère la valeur d'un paramètre dont le nom est departement
-//
-//		String departementParam = request.getParameter("departement");
-//
-//		response.setContentType("text/html");
-//
-//		// code HTML écrit dans le corps de la réponse
-//
-//		response.getWriter().write("<h1>Liste des collaborateurs</h1>"
-//
-//				+ "<ul>"
-//
-//				+ "<li>avecPhoto=" + avecPhotoParam + "</li>"
-//
-//				+ "<li>departement=" + departementParam + "</li>"
-//
-//				+ "</ul>");
-		request.setAttribute("listeNoms", Arrays.asList("Robert", "Jean", "Hugues"));
+		request.setAttribute("collaborateurs", collaborateurs);
+		
 		request.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
 		.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
+
+		
 		doGet(request, response);
 	}
 
