@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class EditerCollaborateurController
  */
-@WebServlet("/EditerCollaborateurController")
+//@WebServlet("/EditerCollaborateurController")
 public class EditerCollaborateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,6 +30,21 @@ public class EditerCollaborateurController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		
+		response.getWriter().write("<h1>Hello EditerCollaborateurController</h1>");
+
+		// response.getWriter().append("Served at:
+		// ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 		String matricule = request.getParameter("matricule");
 
 		String titre = request.getParameter("titre");
@@ -39,7 +54,9 @@ public class EditerCollaborateurController extends HttpServlet {
 		String prenom = request.getParameter("prenom");
 
 		response.setContentType("text/html");
-
+		
+		
+		
 		if (matricule == null) {
 			response.setStatus(400);
 
@@ -78,19 +95,8 @@ public class EditerCollaborateurController extends HttpServlet {
 					+ "prenom : " + prenom + "<br>\n"
 					+ "</p>");
 		}
-
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		//doGet(request, response);
 	}
 
 }
