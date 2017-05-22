@@ -15,41 +15,107 @@
 <title>SGP - liste collaborateur</title>
 </head>
 
-<body class="jumbotron">
+<body class="container">
 
-	<h1>Les collaborateurs</h1>
+	<h2>Les collaborateurs :</h2>
+
+	<br>
+	<br>
+	<br>
+
+	<form class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Recherche</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="searchNomPrenom">Rechercher
+					un nom ou un prénom qui commence par: </label>
+				<div class="col-md-2">
+					<input id="searchNomPrenom" name="searchNomPrenom" type="text"
+						placeholder="" class="form-control input-md">
+
+				</div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="depSearch">Filtrer
+					par département :</label>
+				<div class="col-md-2">
+					<select id="depSearch" name="depSearch" class="form-control">
+						<option value="1">Tous</option>
+						<option value="2">Comptabilité</option>
+						<option value="3">Ressources humaines</option>
+						<option value="4">Informatique</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Multiple Checkboxes (inline) -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="checkboxes">Voir
+					les collaborateurs désactivé :</label>
+				<div class="col-md-4">
+					<label class="checkbox-inline" for="checkboxes-0"> <input
+						type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
+
+					</label>
+				</div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="search"></label>
+				<div class="col-md-4">
+					<button id="search" name="search" class="btn btn-primary">Rechercher</button>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+
+	<br>
+	<br>
+	<br>
 
 	<a href="nouveau" class="btn btn-lg btn-primary"><span
 		class="glyphicon glyphicon-user"></span> nouveau</a>
+	<br>
+	<br>
+	<h3>Liste des collaborateur :</h3>
+	<br>
+	<div class="jumbotron row ">
 
-	<div>
-		<ul>
+		<%
+			List<Collaborateur> collaborateurs = (List<Collaborateur>) request.getAttribute("collaborateurs");
 
-			<%
-				List<Collaborateur> collaborateurs = (List<Collaborateur>) request.getAttribute("collaborateurs");
+			for (Collaborateur collab : collaborateurs) {
+		%>
 
-				for (Collaborateur collab : collaborateurs) {
-			%>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 
-			<li>Matricule : <%=collab.getMatricule()%> <br> Nom : <%=collab.getNom()%>
-				<br> Prenom : <%=collab.getPrenom()%><br> Date de
-				Naissance : <%=collab.getDateDeNaissance()%><br> Adresse : <%=collab.getAdresse()%>
-				<br> Numero de séurité sociale : <%=collab.getNumSecu()%><br>
+			<ul>
+				<li>Matricule : <%=collab.getMatricule()%> <br> Nom : <%=collab.getNom()%><br>
+					Prenom : <%=collab.getPrenom()%><br> Date de Naissance : <%=collab.getDateDeNaissance()%><br>
+					Adresse : <%=collab.getAdresse()%><br> Numero de séurité
+					sociale : <%=collab.getNumSecu()%><br> Date de création : <%=collab.getDateHeureCreation()%><br>
+					Email professionel : <%=collab.getEmailPro()%><br> actif ? : <%=collab.isActif()%><br>
+					<br> <br>
+				</li>
+				<a href="" class="btn btn-xs btn-warning pull-right"><span
+					class="glyphicon glyphicon-pencil"></span> Modifier</a>
+			</ul>
 
+		</div>
 
-				<br> <br>
+		<%
+			}
+		%>
 
-			</li>
-
-			<%
-				}
-			%>
-
-		</ul>
 	</div>
-
-
-
 
 </body>
 

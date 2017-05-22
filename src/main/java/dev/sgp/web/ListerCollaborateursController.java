@@ -14,7 +14,7 @@ import dev.sgp.util.Constantes;
 /**
  * Servlet implementation class ListerCollaborateursController
  */
-@WebServlet("/ListerCollaborateursController")
+//@WebServlet("/ListerCollaborateursController")
 public class ListerCollaborateursController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// récupération du service

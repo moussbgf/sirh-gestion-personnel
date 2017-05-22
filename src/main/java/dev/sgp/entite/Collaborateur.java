@@ -5,6 +5,17 @@ import java.time.ZonedDateTime;
 
 public class Collaborateur {
 	
+	
+	
+	
+	public Collaborateur() {
+		super();
+		
+		this.actif = true;
+		this.photo = "urls de l'image";
+		
+	}
+
 	private String matricule;
 	
 	private String nom;

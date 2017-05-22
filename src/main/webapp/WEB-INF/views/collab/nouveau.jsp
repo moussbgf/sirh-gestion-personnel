@@ -12,13 +12,34 @@
 	href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
 <title>SGP - ajout collaborateur</title>
 </head>
-<body class="jumbotron">
-	
- 	<a href="lister" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> Annuler</a>
- <br><br><br>
+<body class="container">
+
+
+	<%-- 	<p class="alert alert-danger">${ !empty status ? "Erreur !" : '' }</p> --%>
+
+	<%
+		int erreur = (int) request.getAttribute("erreur");
+
+		if (erreur == 1) {
+			String errorMessage = (String) request.getAttribute("errorMessage");
+	%>
+
+	<p class="alert alert-danger">
+		<%=errorMessage%></p>
+
+	<%
+		}
+	%>
+
+
+	<a href="lister" class="btn btn-lg btn-danger"><span
+		class="glyphicon glyphicon-arrow-left"></span> Annuler</a>
+	<br>
+	<br>
+	<br>
 	<div>
 
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal jumbotron" method="post">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -26,10 +47,10 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="nom">Nom:</label>
+					<label class="col-md-4 control-label" for="nom">Nomddd:</label>
 					<div class="col-md-2">
 						<input id="nom" name="nom" type="text" placeholder="Nom"
-							class="form-control input-md" required="">
+							class="form-control input-md">
 
 					</div>
 				</div>
