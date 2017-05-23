@@ -16,7 +16,7 @@ import dev.sgp.service.VisitesWebService;
 import dev.sgp.util.Constantes;
 
 
-//@WebFilter("/FrequentationFilter")
+@WebFilter("/*")
 public class FrequentationFilter implements Filter {
 	
 	private VisitesWebService visiteService = Constantes.VISITE_SERVICE;

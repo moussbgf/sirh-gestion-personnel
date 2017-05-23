@@ -12,7 +12,7 @@ import dev.sgp.service.VisitesWebService;
 import dev.sgp.util.Constantes;
 
 
-@WebServlet("/collaborateurs/nouveau")
+@WebServlet("/collaborateurs/statistiques")
 public class StatistiquesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
