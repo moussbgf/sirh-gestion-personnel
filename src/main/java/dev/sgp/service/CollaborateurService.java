@@ -11,13 +11,13 @@ public class CollaborateurService {
 
 	public List<Collaborateur> listerCollaborateurs() {
 
-	return listeCollaborateurs;
+		return listeCollaborateurs;
 
 	}
 
 	public void sauvegarderCollaborateur(Collaborateur collab) {
 
-	listeCollaborateurs.add(collab);
+		listeCollaborateurs.add(collab);
 
 	}
 }
