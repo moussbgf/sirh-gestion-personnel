@@ -56,16 +56,14 @@ public class NouveauCollaborateurController extends HttpServlet {
 		String numsecu = request.getParameter("numsecu");
 		
 		
-//		/* fichier application.properties dans /resources */
-//		/*configurer le profil pour choisir la factory à charger et le type de stockage choisi*/
-//		/* 3 profils : 1) dev (memoire) 2) prod (fichier) 3) ddb (jdbc) */
-//		ResourceBundle bundle = ResourceBundle.getBundle("application");
-//
-//		String suffixe = bundle.getString("dao.impl");
+		/* fichier application.properties dans /resources */
+		ResourceBundle bundle = ResourceBundle.getBundle("application");
+
+		String suffixe = bundle.getString("suffixe.email");
 		
 
 		String matricule = UUID.randomUUID().toString();
-		String emailPro = prenom + "." + nom + "@societe.com";
+		String emailPro = prenom + "." + nom + suffixe;
 		ZonedDateTime dateHeureCreation = ZonedDateTime.now();
 
 		collab.setMatricule(matricule);
@@ -76,7 +74,6 @@ public class NouveauCollaborateurController extends HttpServlet {
 		collab.setNumSecu(numsecu);
 		collab.setEmailPro(emailPro);
 		collab.setActif(true);
-		collab.setPhoto("");
 		collab.setDateHeureCreation(dateHeureCreation);
 		
 		Map<Boolean, List<String>> validationParams = validerParametres(request, "nom","prenom", "adresse", "numsecu");

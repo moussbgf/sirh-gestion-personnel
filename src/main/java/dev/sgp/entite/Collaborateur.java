@@ -35,9 +35,28 @@ public class Collaborateur {
 	private ZonedDateTime dateHeureCreation;
 	
 	private boolean actif;
+	
+	private String intitulePoste;
 
+	private Departement departement;
 	
 	
+	
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
 	
 	public String getMatricule() {
 		return matricule;
