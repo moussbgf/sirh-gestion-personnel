@@ -1,6 +1,9 @@
 <%@page import="java.util.List"%>
 <%@page import="dev.sgp.entite.Collaborateur"%>
 <%@page import="dev.sgp.entite.Departement"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -10,9 +13,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
+	href="<c:url value='/bootstrap-3.3.7-dist/css/bootstrap.css'></c:url>">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/js/bootstrap.js">
+	href="<c:url value='/bootstrap-3.3.7-dist/js/bootstrap.js'></c:url>">
 <title>SGP - liste collaborateur</title>
 </head>
 
@@ -49,21 +52,12 @@
 					<select id="depSearch" name="depSearch" class="form-control">
 					
 					<option value="0">Tous</option>
-					
-					
-						<%						
-						List<Departement> departements = (List<Departement>) request.getAttribute("departements");
 						
-						for (Departement dept : departements) {
+						<c:forEach var="dept" items="${ departements }">
 						
-						%>
-			
-						<option value="2"><%=dept.getNom()%></option>
+						<option value="${ dept.id }">${ dept.nom }</option>
 						
-						
-						<%
-							}
-						%>
+						</c:forEach>
 						
 					</select>
 				</div>
@@ -103,22 +97,17 @@
 	<h3>Liste des collaborateur :</h3>
 	<br>
 	<div class="jumbotron row ">
-
-		<%
-			
-		List<Collaborateur> collaborateurs = (List<Collaborateur>) request.getAttribute("collaborateurs");
-
-			for (Collaborateur collab : collaborateurs) {
-		%>
-
+		
+		<c:forEach var="collab" items="${ collaborateurs }">
+		
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 
 			<ul>
-				<li>Matricule : <%=collab.getMatricule()%> <br> Nom : <%=collab.getNom()%><br>
-					Prenom : <%=collab.getPrenom()%><br> Date de Naissance : <%=collab.getDateDeNaissance()%><br>
-					Adresse : <%=collab.getAdresse()%><br> Numero de séurité
-					sociale : <%=collab.getNumSecu()%><br> Date de création : <%=collab.getDateHeureCreation()%><br>
-					Email professionel : <%=collab.getEmailPro()%><br> actif ? : <%=collab.isActif()%><br>
+				<li>Matricule : ${ collab.matricule } <br> Nom : ${ collab.nom }<br>
+					Prenom : ${ collab.prenom }><br> Date de Naissance : ${ collab.dateDeNaissance }<br>
+					Adresse : ${ collab.adresse }<br> Numero de séurité
+					sociale : ${ collab.numSecu }<br> Date de création : ${ collab.dateHeureCreation }<br>
+					Email professionel : ${ collab.emailPro }<br> actif ? : ${ collab.actif }<br>
 					<br> <br>
 				</li>
 				<a href="" class="btn btn-xs btn-warning pull-right"><span
@@ -126,10 +115,8 @@
 			</ul>
 
 		</div>
-
-		<%
-			}
-		%>
+		
+		</c:forEach>
 
 	</div>
 

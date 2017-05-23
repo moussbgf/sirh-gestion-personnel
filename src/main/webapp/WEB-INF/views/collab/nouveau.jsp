@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="dev.sgp.entite.Collaborateur"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
@@ -15,21 +16,13 @@
 <body class="container">
 
 
-	<%-- 	<p class="alert alert-danger">${ !empty status ? "Erreur !" : '' }</p> --%>
-
-	<%
-		int erreur = (int) request.getAttribute("erreur");
-
-		if (erreur == 1) {
-			String errorMessage = (String) request.getAttribute("errorMessage");
-	%>
-
-	<p class="alert alert-danger">
-		<%=errorMessage%></p>
-
-	<%
-		}
-	%>
+	 	<%-- <p class="alert alert-danger">${ !empty status ? "Erreur !" : '' }</p>  --%>
+	
+	<c:if test="${ erreur == 1 }">
+	
+	<p class="alert alert-danger"> ${ errorMessage } </p>
+	
+	</c:if>
 
 
 	<a href="lister" class="btn btn-lg btn-danger"><span
