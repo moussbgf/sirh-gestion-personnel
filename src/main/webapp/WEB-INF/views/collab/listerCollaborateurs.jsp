@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="dev.sgp.entite.Collaborateur"%>
+<%@page import="dev.sgp.entite.Departement"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -46,10 +47,24 @@
 					par département :</label>
 				<div class="col-md-2">
 					<select id="depSearch" name="depSearch" class="form-control">
-						<option value="1">Tous</option>
-						<option value="2">Comptabilité</option>
-						<option value="3">Ressources humaines</option>
-						<option value="4">Informatique</option>
+					
+					<option value="0">Tous</option>
+					
+					
+						<%						
+						List<Departement> departements = (List<Departement>) request.getAttribute("departements");
+						
+						for (Departement dept : departements) {
+						
+						%>
+			
+						<option value="2"><%=dept.getNom()%></option>
+						
+						
+						<%
+							}
+						%>
+						
 					</select>
 				</div>
 			</div>
@@ -90,7 +105,8 @@
 	<div class="jumbotron row ">
 
 		<%
-			List<Collaborateur> collaborateurs = (List<Collaborateur>) request.getAttribute("collaborateurs");
+			
+		List<Collaborateur> collaborateurs = (List<Collaborateur>) request.getAttribute("collaborateurs");
 
 			for (Collaborateur collab : collaborateurs) {
 		%>
