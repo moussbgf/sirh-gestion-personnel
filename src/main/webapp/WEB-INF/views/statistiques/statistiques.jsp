@@ -36,7 +36,7 @@
 		
 		</thead>
 		
-		<c:forEach var="visite" items="${ listeVisites }">
+		<c:forEach var="visite" items="${ listeVisitesWeb }">
 		
 		<tr>
 		
@@ -47,6 +47,35 @@
 		</tr>
 
 		</c:forEach>
+		
+		</table>
+		
+		
+			<table class="table table-striped">
+		<thead>
+            <tr>
+                <th>Chemin</th>
+                <th>Nombre de visites</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Moyenne</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        	<c:forEach var="visite" items="${listeVisiteLog}">
+        	<tr>
+        		<td>${visite.chemin}</td>
+        		<td>${visite.nbVisites}</td>
+        		<td>${visite.min}</td>
+        		<td>${visite.max}</td>
+        		<td>${visite.moyenne}</td>
+        	</tr>
+        	</c:forEach>
+        </tbody>
+        
+	
+	</table>
 
 </body>
 </html>

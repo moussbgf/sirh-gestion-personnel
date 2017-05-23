@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dev.sgp.entite.VisiteLog;
 import dev.sgp.entite.VisiteWeb;
 import dev.sgp.service.VisitesWebService;
 import dev.sgp.util.Constantes;
@@ -26,7 +28,9 @@ public class StatistiquesController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<VisiteWeb> listeVisites = visiteService.listerDepartements();
+		List<VisiteWeb> listeVisitesWeb = visiteService.listerVisites();
+		
+		List<VisiteLog> listeVisiteLog = visiteService.construireStatistiques();
 		
 //		int nbNouveau = (int) listeVisites.stream()
 //                .filter(x -> x.getChemin().equals("/sgp/collaborateurs/nouveau")).count();
@@ -48,7 +52,11 @@ public class StatistiquesController extends HttpServlet {
         
 
 		
-		request.setAttribute("listeVisites", listeVisites);
+		request.setAttribute("listeVisitesWeb", listeVisitesWeb);
+		
+		request.setAttribute("listeVisiteLog", listeVisiteLog);
+		
+		
 		
 		request.getRequestDispatcher("/WEB-INF/views/statistiques/statistiques.jsp")
 		.forward(request, response);
