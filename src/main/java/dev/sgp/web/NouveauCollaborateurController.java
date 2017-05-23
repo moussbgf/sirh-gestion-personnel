@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +19,8 @@ import dev.sgp.entite.Collaborateur;
 import dev.sgp.service.CollaborateurService;
 import dev.sgp.util.Constantes;
 
-/**
- * Servlet implementation class NouveauCollaborateurController
- */
-// @WebServlet("/NouveauCollaborateurController")
+
+@WebServlet("/collaborateurs/nouveau")
 public class NouveauCollaborateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,8 +36,7 @@ public class NouveauCollaborateurController extends HttpServlet {
 		request.setAttribute("erreur", 0);
 		
 		request.getRequestDispatcher("/WEB-INF/views/collab/nouveau.jsp").forward(request, response);
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -109,14 +107,6 @@ public class NouveauCollaborateurController extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/collaborateurs/lister");
 		}
-		
-		
-		
-		
-		
-		
-
-		// doGet(request, response);
 	}
 
 	private Map<Boolean, List<String>> validerParametres(HttpServletRequest req, String... params) {
