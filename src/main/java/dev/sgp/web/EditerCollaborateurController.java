@@ -1,71 +1,58 @@
 package dev.sgp.web;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dev.sgp.service.CollaborateurService;
+import dev.sgp.util.Constantes;
+
 
 @WebServlet("/collaborateurs/editer")
 public class EditerCollaborateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public EditerCollaborateurController() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 
 		
-		response.getWriter().write("<h1>Hello EditerCollaborateurController</h1>");
+		//response.getWriter().write("<h1>Hello EditerCollaborateurController</h1>");
+		
+		request.getRequestDispatcher("/WEB-INF/views/collab/editer.jsp").forward(request, response);
 
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		String matricule = request.getParameter("matricule");
-
-		String titre = request.getParameter("titre");
-
 		String nom = request.getParameter("nom");
 
 		String prenom = request.getParameter("prenom");
+		
+		String adresse = request.getParameter("adresse");
 
-		response.setContentType("text/html");
+		String dateNaissanceBefore = request.getParameter("datedenaissance");
+		LocalDate dateNaissance = LocalDate.parse(dateNaissanceBefore);
 		
+		String numsecu = request.getParameter("numsecu");
 		
-		
-		if (matricule == null) {
-			response.setStatus(400);
-
-			response.getWriter().write("<h1>Errur, Parametres incorrects ! Un matricule est attendu</h1>");
-		}
-		
-		if (titre == null) {
-			response.setStatus(400);
-
-			response.getWriter().write("<h1>Errur, Parametres incorrects ! Un titre est attendu</h1>");
-		}
 		
 		if (nom == null) {
 			response.setStatus(400);
@@ -84,17 +71,20 @@ public class EditerCollaborateurController extends HttpServlet {
 		if(status != 400)
 		 {
 			response.setStatus(201);
-			response.getWriter().write("<h1>Edition de collaborateur</h1>"
-					+ "<h2>Creation d'un collaborateur avec les infos suivantes : </h2><br>"
-					+ "<p>" 
-					+ "Matricule : " + matricule + "<br>\n" 
-					+ "titre : " + titre + "<br>\n"
-					+ "nom : " + nom + "<br>\n"
-					+ "prenom : " + prenom + "<br>\n"
-					+ "</p>");
+			response.sendRedirect(request.getContextPath() + "/collaborateurs/lister");
+			
+			//collabService.find();
+			
 		}
 		
 		//doGet(request, response);
+	}
+	
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		response.sendRedirect(request.getContextPath() + "/collaborateurs/lister");
+		
 	}
 
 }

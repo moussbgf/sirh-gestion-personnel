@@ -119,7 +119,7 @@
 					Email professionel : ${ collab.emailPro }<br> actif ? : ${ collab.actif }<br>
 					<br> <br>
 				</li>
-				<a href="" class="btn btn-xs btn-warning pull-right"><span
+				<a href="editer" class="btn btn-xs btn-warning pull-right"><span
 					class="glyphicon glyphicon-pencil"></span> Modifier</a>
 			</ul>
 

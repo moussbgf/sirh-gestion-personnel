@@ -93,7 +93,7 @@
 					<label class="col-md-4 control-label" for="singlebutton">Single
 						Button</label>
 					<div class="col-md-4">
-						<button id="singlebutton" type="post" name="singlebutton"
+						<button id="singlebutton" name="singlebutton"
 							class="btn btn-primary">Créer</button>
 					</div>
 				</div>
