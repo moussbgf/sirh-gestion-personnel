@@ -26,6 +26,15 @@
 	<br>
 	<br>
 	<br>
+	
+	<div>
+		<a href="statistiques" class="btn btn-lg btn-primary"><span
+		class="glyphicon pull-right"></span> statistiques</a>
+	</div>
+	
+	
+	<br>
+	<br>
 
 	<form class="form-horizontal">
 		<fieldset>
