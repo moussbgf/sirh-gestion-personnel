@@ -1,6 +1,5 @@
 package dev.sgp.entite;
 
-import java.util.UUID;
 
 public class VisiteWeb {
 	

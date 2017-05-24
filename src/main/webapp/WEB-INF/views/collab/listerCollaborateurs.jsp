@@ -6,6 +6,8 @@
 
 <%@ page language="java" pageEncoding="UTF-8"%>
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -21,19 +23,15 @@
 
 <body class="container">
 
+	<%@include file="../template/header.jsp"%>
+
 	<h2>Les collaborateurs :</h2>
 
 	<br>
 	<br>
 	<br>
-	
-	<div>
-		<a href="statistiques" class="btn btn-lg btn-primary"><span class="glyphicon pull-right"></span> statistiques</a>
-		
-		<a href="activites" class="btn btn-lg btn-primary"><span></span> Activités</a>
-	</div>
-	
-	
+
+
 	<br>
 	<br>
 
@@ -60,15 +58,15 @@
 					par département :</label>
 				<div class="col-md-2">
 					<select id="depSearch" name="depSearch" class="form-control">
-					
-					<option value="0">Tous</option>
-						
+
+						<option value="0">Tous</option>
+
 						<c:forEach var="dept" items="${ departements }">
-						
-						<option value="${ dept.id }">${ dept.nom }</option>
-						
+
+							<option value="${ dept.id }">${ dept.nom }</option>
+
 						</c:forEach>
-						
+
 					</select>
 				</div>
 			</div>
@@ -107,25 +105,25 @@
 	<h3>Liste des collaborateur :</h3>
 	<br>
 	<div class="jumbotron row ">
-		
+
 		<c:forEach var="collab" items="${ collaborateurs }">
-		
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 
-			<ul>
-				<li>Matricule : ${ collab.matricule } <br> Nom : ${ collab.nom }<br>
-					Prenom : ${ collab.prenom }><br> Date de Naissance : ${ collab.dateDeNaissance }<br>
-					Adresse : ${ collab.adresse }<br> Numero de séurité
-					sociale : ${ collab.numSecu }<br> Date de création : ${ collab.dateHeureCreation }<br>
-					Email professionel : ${ collab.emailPro }<br> actif ? : ${ collab.actif }<br>
-					<br> <br>
-				</li>
-				<a href="editer" class="btn btn-xs btn-warning pull-right"><span
-					class="glyphicon glyphicon-pencil"></span> Modifier</a>
-			</ul>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 
-		</div>
-		
+				<ul>
+					<li>Matricule : ${ collab.matricule } <br> Nom : ${ collab.nom }<br>
+						Prenom : ${ collab.prenom }><br> Date de Naissance : ${ collab.dateDeNaissance }<br>
+						Adresse : ${ collab.adresse }<br> Numero de séurité sociale :
+						${ collab.numSecu }<br> Date de création : ${ collab.dateHeureCreation }<br>
+						Email professionel : ${ collab.emailPro }<br> actif ? : ${ collab.actif }<br>
+						<br> <br>
+					</li>
+					<a href="editer" class="btn btn-xs btn-warning pull-right"><span
+						class="glyphicon glyphicon-pencil"></span> Modifier</a>
+				</ul>
+
+			</div>
+
 		</c:forEach>
 
 	</div>

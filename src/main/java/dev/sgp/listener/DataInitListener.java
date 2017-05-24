@@ -1,23 +1,35 @@
 package dev.sgp.listener;
 
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.stream.Stream;
 import javax.inject.Inject;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
+import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
+import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
 
 
 @WebListener
-public class DataInitListener implements HttpSessionListener {
+public class DataInitListener implements ServletContextListener {
 	
 	@Inject private DepartementService dptService;
+	
+	@Inject private CollaborateurService collabService;
 	
     public DataInitListener() {
     	
     }
 
-    public void sessionCreated(HttpSessionEvent event)  { 
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		
 //    	Integer compteur = (Integer) event.getSession().getServletContext().getAttribute("compteur");
 //
 //    	event.getSession().getServletContext().setAttribute("compteur", compteur + 1);
@@ -47,12 +59,32 @@ public class DataInitListener implements HttpSessionListener {
 		dptService.ajouterDepartements(dpt2);
 		dptService.ajouterDepartements(dpt3);
 		dptService.ajouterDepartements(dpt4);
-    	
-    }
+		
+		/*
+		 * Initialiser liste des collaborateurs ICI :
+		 */
+        ZonedDateTime dateHeureCreation = ZonedDateTime.now();
+        
+        
+        
+        
+        
+        
+        Stream.of( new Collaborateur("1", "ee", "ss", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, dpt1),
+                new Collaborateur("2", "est", "rr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, dpt2),
+                new Collaborateur("3", "pmp", "cdr", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, dpt3),
+                new Collaborateur("4", "sar", "vif", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, dpt4),
+                new Collaborateur("5", "pop", "youpi", LocalDate.parse("1993-06-25"), "14", "121212121212121", "ee.ss@societe.com","img.png" ,dateHeureCreation , true, dpt1)
+                
+        ).forEach(collab -> collabService.sauvegarderCollaborateur(collab));
+     
+		
+	}
 
-
-    public void sessionDestroyed(HttpSessionEvent arg0)  { 
-    	
-    }
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

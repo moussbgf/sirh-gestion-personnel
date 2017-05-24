@@ -13,12 +13,25 @@
 	href="<c:url value='/bootstrap-3.3.7-dist/js/bootstrap.js'></c:url>">
 <title>SGP - Activites</title>
 </head>
-<body>
+<body class="container">
+
+<%@include file="../template/header.jsp" %>
+<br>
+		<br>
+		<br>
 		
 		<h1>Activités depuis le démarage de l'application</h1>
 		
+		<br>
+		<br>
+		<br>
+		
 		<a href="lister" class="btn btn-primary"><span
 		class="glyphicon glyphicon-arrow-left"></span> retour</a>
+		
+		<br>
+		<br>
+		<br>
 		
 		<table class="table table-striped">
 		<thead>

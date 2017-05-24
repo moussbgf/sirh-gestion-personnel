@@ -15,7 +15,11 @@
 </head>
 <body class="container">
 
+<%@include file="../template/header.jsp" %>
 
+<br>
+		<br>
+		<br>
 	 	<%-- <p class="alert alert-danger">${ !empty status ? "Erreur !" : '' }</p>  --%>
 	
 	<c:if test="${ erreur == 1 }">

@@ -21,6 +21,8 @@
 
 <body class="container">
 
+<%@include file="../template/header.jsp" %>
+
 	<h2>Editer un collaborateur :</h2>
 
 

@@ -2,11 +2,13 @@ package dev.sgp.entite;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Collaborateur {
-	
-	
-	
 	
 	public Collaborateur() {
 		super();
@@ -15,7 +17,28 @@ public class Collaborateur {
 		this.photo = "urls de l'image";
 		
 	}
+	
+	
+	
+	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateDeNaissance, String adresse,
+			String numSecu, String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif, Departement departement) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		DateDeNaissance = dateDeNaissance;
+		this.adresse = adresse;
+		this.numSecu = numSecu;
+		this.emailPro = emailPro;
+		this.photo = photo;
+		this.dateHeureCreation = dateHeureCreation;
+		this.actif = actif;
+		this.departement = departement;
+	}
 
+
+
+	@Id
 	private String matricule;
 	
 	private String nom;
@@ -37,9 +60,9 @@ public class Collaborateur {
 	private boolean actif;
 	
 	private String intitulePoste;
-
-	private Departement departement;
 	
+	@ManyToOne
+	private Departement departement;
 	
 	
 	public String getIntitulePoste() {
@@ -138,7 +161,11 @@ public class Collaborateur {
 		this.actif = actif;
 	}
 	
-	
+	public String getFormattedDateHeure() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
+        return this.dateHeureCreation.format(format);
+        
+    }
 	
 	
 }

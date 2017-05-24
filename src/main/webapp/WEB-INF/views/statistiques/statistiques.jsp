@@ -14,7 +14,10 @@
 <title>SGP - Statistiques</title>
 </head>
 <body class="container">
-
+	<%@include file="../template/header.jsp"%>
+	<br>
+	<br>
+	<br>
 	<h1>Statistiques</h1>
 
 	<br>
@@ -26,9 +29,11 @@
 	<br>
 	<br>
 	<br>
-	
-	<h3><u>Stats : </u></h3>
-	
+
+	<h3>
+		<u>Stats : </u>
+	</h3>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -54,9 +59,11 @@
 
 
 	</table>
-	
-	<h3><u>Stats détaillés : </u></h3>
-	
+
+	<h3>
+		<u>Stats détaillés : </u>
+	</h3>
+
 	<table class="table table-bordered table-striped">
 
 		<thead>
