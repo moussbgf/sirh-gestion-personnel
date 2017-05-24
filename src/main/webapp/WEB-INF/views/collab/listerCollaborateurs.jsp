@@ -28,8 +28,9 @@
 	<br>
 	
 	<div>
-		<a href="statistiques" class="btn btn-lg btn-primary"><span
-		class="glyphicon pull-right"></span> statistiques</a>
+		<a href="statistiques" class="btn btn-lg btn-primary"><span class="glyphicon pull-right"></span> statistiques</a>
+		
+		<a href="activites" class="btn btn-lg btn-primary"><span></span> Activités</a>
 	</div>
 	
 	
