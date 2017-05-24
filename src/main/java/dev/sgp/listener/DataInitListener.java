@@ -1,23 +1,21 @@
 package dev.sgp.listener;
 
+import javax.inject.Inject;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-
 import dev.sgp.entite.Departement;
 import dev.sgp.service.DepartementService;
-import dev.sgp.util.Constantes;
 
 
 @WebListener
 public class DataInitListener implements HttpSessionListener {
 	
-	private DepartementService dptService = Constantes.DEPT_SERVICE;
+	@Inject private DepartementService dptService;
 	
     public DataInitListener() {
     	
     }
-
 
     public void sessionCreated(HttpSessionEvent event)  { 
 //    	Integer compteur = (Integer) event.getSession().getServletContext().getAttribute("compteur");

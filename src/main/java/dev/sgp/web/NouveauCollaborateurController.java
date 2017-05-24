@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.service.CollaborateurService;
-import dev.sgp.util.Constantes;
 
 
 @WebServlet("/collaborateurs/nouveau")
 public class NouveauCollaborateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	@Inject private CollaborateurService collabService;
+	
 
 	public NouveauCollaborateurController() {
 		super();

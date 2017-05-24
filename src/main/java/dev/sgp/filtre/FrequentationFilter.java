@@ -1,6 +1,7 @@
 package dev.sgp.filtre;
 
 import java.io.IOException;
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,16 +11,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import dev.sgp.entite.VisiteWeb;
-import dev.sgp.service.CollaborateurService;
-import dev.sgp.service.DepartementService;
 import dev.sgp.service.VisitesWebService;
-import dev.sgp.util.Constantes;
 
 
 @WebFilter("/*")
 public class FrequentationFilter implements Filter {
 	
-	private VisitesWebService visiteService = Constantes.VISITE_SERVICE;
+	@Inject private VisitesWebService visiteService;
 	
     public FrequentationFilter() {
     	

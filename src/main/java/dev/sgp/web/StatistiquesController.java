@@ -2,23 +2,22 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import dev.sgp.entite.VisiteLog;
 import dev.sgp.entite.VisiteWeb;
 import dev.sgp.service.VisitesWebService;
-import dev.sgp.util.Constantes;
 
 
 @WebServlet("/collaborateurs/statistiques")
 public class StatistiquesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private VisitesWebService visiteService = Constantes.VISITE_SERVICE;
+	@Inject private VisitesWebService visiteService;
 
     public StatistiquesController() {
         super();
