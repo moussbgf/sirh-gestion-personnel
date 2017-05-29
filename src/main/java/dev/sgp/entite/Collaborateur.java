@@ -3,9 +3,18 @@ package dev.sgp.entite;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
 
 @Entity
 public class Collaborateur {
@@ -21,7 +30,7 @@ public class Collaborateur {
 	
 	
 	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateDeNaissance, String adresse,
-			String numSecu, String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif, Departement departement) {
+			String numSecu, String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif, Departement departement, String banque, String bic, String iban ) {
 		super();
 		this.matricule = matricule;
 		this.nom = nom;
@@ -34,6 +43,9 @@ public class Collaborateur {
 		this.dateHeureCreation = dateHeureCreation;
 		this.actif = actif;
 		this.departement = departement;
+		this.banque = banque;
+		this.bic = bic;
+		this.iban = iban;
 	}
 
 
@@ -65,6 +77,49 @@ public class Collaborateur {
 	private Departement departement;
 	
 	
+	private String banque;
+	
+	private String bic;
+	
+	private String iban;
+	
+	
+	
+	
+	public String getBanque() {
+		return banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+
+
+	public String getBic() {
+		return bic;
+	}
+
+
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+
+
+	public String getIban() {
+		return iban;
+	}
+
+
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+
+
 	public String getIntitulePoste() {
 		return intitulePoste;
 	}
